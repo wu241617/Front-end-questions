@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				padding:1rem;
+				margin:2rem auto 0;
+				box-shadow:0 0 0.5rem 0.5rem #666;
+				border-radius:1rem;
+				font-size:0.7rem;
+				font-family:微软雅黑;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+				background-color:black;
+				color:white;
+				margin:0.5rem 0;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+			}
+			ul>li{
+				margin:0.5rem 0;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>script的async和defer的区别</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>async和defer</h3>
+				<ul>
+					<li>浏览器在执行HTML的时候如果遇到script标签就会停止页面的渲染，去下载和执行JS文件直到遇到script结束标签，会继续渲染页面。因此浏览器在执行JS文件的时候浏览器会出现一片空白，为了解决这个问题ECMAScript定义了defer和async两个属性用于控制JS的下载和执行。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>红宝书中，对二者的解释</h3>
+				<ul>
+					<li>defer:这个属性的用途是表明脚本在执行时不会影响页面的构造，也就是说，脚本会被延迟到整个页面都解析完毕后在运行。因此，script元素中defer属性，相当于告诉浏览器立即下载，但延迟执行。</li>
+					<li>async:这个属性和defer类似，都用于改变处理脚本的行为。async只适用于外部脚本文件，并告诉浏览器立即下载文件。但与defer不同的是 ，标记async的脚本并不保持按照它们的先后顺序执行。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>MDN上对二者的解释</h3>
+				<ul>
+					<li>defer:这个布尔属性被设置用来通知浏览器该脚本将在文档完成解析后，触发DOMContentLoaded时间前执行，如果缺少src属性，该属性不会生效。</li>
+					<li>async:该布尔值指示浏览器是否在允许的情况下异步执行该脚本。该属性对内联脚本（缺少src属性）无用。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>二者的相同点</h3>
+				<ul>
+					<li>加载文件时不阻塞页面渲染。</li>
+					<li>对于内联的script无效。</li>
+					<li>使用这两个属性的脚本中，不能调用document.write方法。</li>
+					<li>有脚本的onload的时间回调。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>二者的不同点</h3>
+				<ul>
+					<li>当一个script标签内同时包含defer和async属性，只会触发async，不会触发defer,除非浏览器不兼容。</li>
+					<li>html4.0中定义了defer,html5.0中定义了async,浏览器支持不同</li>
+					<li>每一个async属性定义的脚本都在它下载之后立即执行，同时在window.onload事件之前执行。</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>

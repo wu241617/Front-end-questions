@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no.viewport-fit=cover">
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				padding:1rem;
+				margin:2rem auto 0;
+				box-shadow:0 0 0.5rem 0.5rem #666;
+				border-radius:1rem;
+				font-size:0.7rem;
+				font-family:微软雅黑;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+				background-color:black;
+				color:white;
+				margin:0.5rem 0;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+			}
+			ul>li{
+				margin:0.5rem 0;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>meta元素都有哪些</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>元数据</h3>
+				<ul>
+					<li>元数据：用来构建HTML文档的基本结构，以及就如何处理文档向浏览器提供信息和指示，它们本身不是文档内容，但提供了关于后面文档内容的信息。如 title,base,meta 都是元数据元素。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>meta 元素</h3>
+				<ul>
+					<li>meta 元素可提供页面的元信息，比如争对搜索引擎和更新频度描述的关键字。</li>
+					<li>html 文档中可以包含多个 meta 元素，每个元素只能有一个用途。</li>
+					<li>meta 包含四大属性：name content http-equiv charset</li>
+				</ul>
+			</section>
+			<section>
+				<h3>meta 包含的属性</h3>
+				<ul>
+					<li>charset:声明了页面的字符编码。常用值：utf-8(Unicode字符编码)</li>
+					<li>content:配合name或http-equiv使用，能够给这两个属性，添加一个值。</li>
+					<li>http-equiv:用做HTTP头部的某些作用。通过设置该属性，可以改变服务器和用户代理的行为。</li>
+					<li>name:用于定义页面的元数据，不能与http-equiv和charset共存，通常是content配合使用。</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>
