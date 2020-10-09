@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,viewport-fit=cover,user-scalable=no">
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				padding:1rem;
+				margin:2rem auto 0;
+				box-shadow: 0 0 0.5rem 0.5rem #666;
+				border-radius:1rem;
+				font-size:0.7rem;
+				font-family:微软雅黑;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+				background-color:black;
+				color:white;
+				margin:0.5rem 0;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+			}
+			ul>li{
+				margin:0.5rem 0;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					margin:0;
+					padding:0;
+				}
+			}
+		</style>
+		<title>网站SEO处理</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>搜索引擎工作原理</h3>
+				<ul>
+					<li>在搜索引擎网站的后台会有一个非常庞大的数据库，里面存储了海量的关键词，每个关键词又对应着很多的网址，这些网址被称为搜索引擎蜘蛛 / 网络爬虫。</li>
+					<li>一个关键词对应多个网址，因此就出现了排序的问题，相应的与关键词最稳合的网址会排在最前面。</li>
+					<li>在蜘蛛抓取网页提取关键字的过程中，存在一个问题。如果网站是flash和js等，它看不懂。相应的如果网站内容可以被搜索引擎识别，搜索引擎就会提高该网站的权重，增加对该网站的友好度，这样一个过程称之为SEO</li>
+				</ul>
+			</section>
+			<section>
+				<h3>前端SEO规范简洁版</h3>
+				<ul>
+					<li>合理的title,description,keywords:搜索对着三项权重逐个减少。title强调重点即可，description把页面内容高度的概括，keywords列举出重要的关键字。</li>
+					<li>语义化的HTML标签</li>
+					<li>非装饰性的图片必须加alt</li>
+					<li>让重要的内容放在HTML最前面，优先加载，搜索引擎爬取HTML顺序从上往下，保证重要内容一定被抓取。</li>
+					<li>每个页面只出现一个h1标签</li>
+					<li>少用iframe,抓取不到</li>
+					<li>页面扁平，层级太深不利于抓取。</li>
+					<li>异步加载内容（ajax）搜索引擎也无法抓取，重要信息选择直接输出，有利于用户体验和SEO</li>
+					<li>采用友情链接：在别人网站导入自己网站的链接</li>
+					<li>向各大搜索引擎登录入口提交尚未收录站点</li>
+					<li>提高网站速度,网站速度是搜索引擎排序的一个重要指标。</li>
+					<li>做好404页面</li>
+				</ul>
+			</section>
+			<section>
+				<h3>前端SEO规范详细版</h3>
+				<ul>
+					<li>网站结构布局优化，尽量简单，提倡扁平化结构
+						<ol>
+							<li>控制首页链接数量</li>
+							<li>扁平化的目录层级：尽量让蜘蛛，只要跳转三次，就可以到达网站内的任一内页。</li>
+							<li>导航优化：导航尽量使用文字方式，图片要加上alt和title。还应该加上面包屑导航。</li>
+							<li>网站的结构布局，页面头部，页面底部</li>
+							<li>利用布局，把重要内容HTML代码放在前面</li>
+							<li>控制页面的大小，减少http请求，提高网站的加载速度。</li>
+						</ol>
+					</li>
+					<li>网页代码优化
+						<ol>
+							<li>突出重要内容，合理的设计title,description,keywords等</li>
+							<li>语义化书写HTML代码，符合W3C标准</li>
+							<li>a标签要加，title属性加以说明</li>
+							<li>正文标题用h1,一个页面保证一个h1</li>
+							<li>img标签要加，alt属性加以说明</li>
+							<li>表格应该使用caption表格标题属性</li>
+							<li>strong,em标签的使用</li>
+							<li>重要内容不要用JS输出</li>
+							<li>尽量少使用iframe框架</li>
+							<li>搜索引擎会过滤掉display:none;其中的内容。</li>
+							<li>蜘蛛只能爬取a标签中的href</li>
+							<li>蜘蛛不会执行JS</li>
+							<li>蜘蛛只能抓到get请求的页面，不能做到post请求的页面</li>
+						</ol>
+					</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				margin:2rem auto 0;
+				padding:1rem;
+				font-size:0.7rem;
+				font-family:微软雅黑;
+				box-shadow:0 0 0.5rem 0.5rem #666;
+				border-radius:1rem;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+				background-color:black;
+				color:white;
+				margin:0.5rem 0;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+			}
+			ul>li{
+				margin:0.5rem 0;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>行内元素和块级元素的区别</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>行内元素和块级元素的区别</h3>
+				<ul>
+					<li>行内元素会在一条直线上排列（默认宽度只与内容有关），都是同一行的，水平方向排列。</li>
+					<li>块级元素各占一行，（默认宽度是它本身父容器的100%,与内容无关），垂直方向排列。</li>
+					<li>块级元素可以包含行内元素和块级元素，行内元素不能包含块级元素，只能包含文本和其他行内元素。</li>
+					<li>行内元素设置width,height,padding,margin等属性无效</li>
+				</ul>
+			</section>
+			<section>
+				<h3>行内元素和块级元素相互转换</h3>
+				<ul>
+					<li>display:block;设置为块级元素</li>
+					<li>display:inline;设置为行内元素</li>
+				</ul>
+			</section>
+			<section>
+				<h3>扩展：inline-block</h3>
+				<ul>
+					<li>inline-block的元素（如input,img）即具有block元素可以设置宽高的特性，同时又具有inline元素默认不换行的特性。可以设置vertical-align:center;垂直居中。</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>

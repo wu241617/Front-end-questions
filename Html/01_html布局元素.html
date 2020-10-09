@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				padding:1rem;
+				margin:2rem auto 0;
+				box-shadow:0 0 0.5rem 0.5rem #666;
+				border-radius:1rem;
+				font-size:0.7rem;
+				font-family:微软雅黑;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+				background-color:black;
+				color:white;
+				margin:0.5rem 0;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+				overflow:hidden;
+				text-overflow:ellipsis;
+				white-space:nowrap;
+			}
+			ul>li{
+				margin:0.5rem 0;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>html布局元素分类和使用场景</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>html布局元素分类</h3>
+				<ul>
+					<li>块状元素：div,h1-h6,hr,menu,ol,ul,li,dl,table,p,from,本身属性为display:block;独占一行，每一个块级元素都会从新的一行开始，从上到下排布，可以直接控制宽度，高度等其他相关css属性。</li>
+					<li>内联元素：span,a,b,strong,i,em,br,inut,textarea,本身属性display:inline。和其他行内元素从左到右在一行显示，不可以直接控制宽度，高度等其他相关css属性，但是可以直接设置内外边距的左右值，宽高是由本身内容大小决定的，只能容纳文本和其他行内元素，不能嵌套块级元素。</li>
+					<li>内联块状元素：不自动换行，能够识别width,height,line-height,padding,margin。默认排列方式从左往右</li>
+				</ul>
+			</section>
+			<section>
+				<h3>html布局元素应用场景</h3>
+				<ul>
+					<li>内联元素：用于不指定宽高，宽高由内容指定</li>
+					<li>块状元素：用于指定宽高，标签占满一行</li>
+					<li>内联块状元素：用于指定元素宽高，不占满一行</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				padding:1rem;
+				margin:2rem auto 0;
+				font-size:0.7rem;
+				font-family:微软雅黑;
+				box-shadow:0 0 0.5rem 0.5rem #666;
+				border-radius:1rem;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				text-align:center;
+				line-height:center;
+				background-color:black;
+				color:white;
+				margin:0.5rem 0;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+			}
+			ul>li{
+				margin:0.5rem 0;
+			}
+		</style>
+		<style>
+			@meida (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>CSS伪类和伪元素的区别</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>CSS伪类</h3>
+				<ul>
+					<li>其核心就是用来选择DOM树之外的信息，不能被普通选择器选择的文档之外的元素，用来添加一些选择器的特殊效果。</li>
+					<li>:hover,:active,:visited,:link,:first0child,:focus,:lang等</li>
+					<li>由于状态的变化是非静态的，所以元素达到一个特定状态时，它可能得到一个伪类的样式；当状态改变，它又会失去这个样式。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>CSS伪元素</h3>
+				<ul>
+					<li>DOM树没有定义的虚拟元素</li>
+					<li>核心就是需要创建通常不存在于文档中的元素。::after,::before</li>
+				</ul>
+			</section>
+			<section>
+				<h3>伪类和伪元素的区别</h3>
+				<ul>
+					<li>表示方式不同：CSS3中，伪类:xxx,伪元素::xxx表示。</li>
+					<li>定义不同：伪类：可以添加类来达到效果。伪元素：需要通过添加元素才能达到效果。</li>
+					<li>相同之处：伪类和伪元素都不出现在源文件和DOM树中。</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>
