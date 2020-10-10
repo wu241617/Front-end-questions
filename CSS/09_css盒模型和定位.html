@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,viewport-fit=cover,user-scalable=no">
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				padding:1rem;
+				margin:2rem auto 0;
+				border-radius:1rem;
+				box-shadow:0 0 0.5rem 0.5rme #666;
+				font-size:0.7rem;
+				font-family:微软雅黑;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+				background-color:black;
+				color:white;
+				margin:0.5rem 0;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+			}
+			ul>li{
+				margin:0.5rem 0;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>CSS盒模型和定位</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>CSS盒模型</h3>
+				<ul>
+					<li>W3C盒模型的构成content,border,padding,margin</li>
+					<li>IE盒模型和标准盒模型，唯一的区别就在于内容计算方式不同。IE盒模型中，width=content+border+padding；标准盒模型中，width=content</li>
+				</ul>
+			</section>
+			<section>
+				<h3>相对定位</h3>
+				<ul>
+					<li>relative,对象不可重叠，不可脱离文档流，参考自身静态位置定位，通过top,bottom,left,right控制定位，并且可以设置z-index进行层级分级</li>
+				</ul>
+			</section>
+			<section>
+				<h3>绝对定位</h3>
+				<ul>
+					<li>absolute,脱离文档流，通过top,bottom,left,right定位。选取最近一个具有定位设置的父级对象进行绝对定位。</li>
+					<li>如果对象的父级没有设置定位属性，absolute元素将以body坐标原点进行定位，可以通过z-index进行层级分级。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>浮动</h3>
+				<ul>
+					<li>脱离文档流，也就是将元素从普通的布局排版中拿走，其他盒子在定位的时候，会当作脱离文档流的元素不存在而进行定位。</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>

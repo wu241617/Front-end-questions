@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			.warp{
+				display:flex;
+				width:600px;
+				height:auto;
+				margin:100px auto 0;
+			}
+			.items{
+				width:0;
+				flex:1;
+				margin-right:10px;
+				background-color:deepskyblue;
+				color:white;
+				text-align:center;
+				border-top:5px solid #f60;
+				display:flex;
+				flex-direction: column;
+				width:600px;
+				transform: rotateZ(180deg);
+			}
+			p{
+				background-color:dodgerblue;
+				color:white;
+				transform: rotateZ(180deg);
+			}
+		</style>
+		<title>多列等高布局</title>
+	</head>
+	<body>
+		<div class="warp">
+			<div class="items"><p>left</p></div>
+			<div class="items">
+				<p>center</p>
+				<p>center</p>
+				<p>center</p>
+				<p>center</p>
+				<p>center</p>
+			</div>
+			<div class="items">
+				<p>center</p>
+				<p>center</p>
+			</div>
+			<div class="items">
+				<p>center</p>
+				<p>center</p>
+				<p>center</p>
+			</div>
+			<div class="items">
+				<p>center</p>
+				<p>center</p>
+				<p>center</p>
+				<p>center</p>
+				<p>center</p>
+				<p>center</p>
+				<p>center</p>
+				<p>center</p>
+				<p>center</p>
+			</div>
+			<div class="items"><p>right</p></div>
+		</div>
+	</body>
+</html>

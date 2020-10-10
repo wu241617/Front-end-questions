@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				padding:1rem;
+				margin:2rem auto 0;
+				font-size:0.7rem;
+				font-family:微软雅黑;
+				box-shadow:0 0 0.5rem 0.5rem #666;
+				border-radius:1rem;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+				background-color:black;
+				color:white;
+				margin:0.5rem 0;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+			}
+			ul>li{
+				margin:0.5rem 0;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>CSS动画</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>CSS实现动画方式</h3>
+				<ul>
+					<li>:hover（动画）</li>
+					<li>transition（过渡）：用于设置元素的过渡样式。</li>
+					<li>animation（动画）：用于设置动画属性。</li>
+					<li>transform（变形）：用于元素进行旋转，缩放，移动，倾斜。</li>
+					<li>translate（移动）：只是transform的一个属性。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>animation 和 transition 的不同</h3>
+				<ul>
+					<li>keyframes提供更多的控制，尤其是时间轴的控制。</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>
