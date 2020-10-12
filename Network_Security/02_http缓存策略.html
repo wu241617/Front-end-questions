@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<link rel="stylesheet" href="./index.css">
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>http缓存策略</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>浏览器缓存策略</h3>
+				<ul>
+					<li>浏览器每次发起请求时，先在本地缓存中查找结果已经缓存标识，根据缓存标识来判断是否使用本地缓存。如果缓存有效，则使用本地缓存，否则则向服务器发起请求并携带缓存标识。根据是否需向服务器发起HTTP请求，将缓存过程划分为两个部分：强制缓存和协商缓存，强缓存优于协商缓存。</li>
+					<li>强缓存：服务器通知浏览器一个缓存时间，在缓存事件内，下次请求，直接用缓存，不在时间内，执行比较缓存策略。</li>
+					<li>协商缓存：让客户端与服务器之间能实现缓存文件是否更新的验证，提升缓存的复用率，将缓存信息中的，Etag和Last-Modified通过请求发送给服务器，由服务器校验，返回304状态码时，浏览器直接使用缓存。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>http缓存都在第二次请求开始的</h3>
+				<ul>
+					<li>第一次请求资源时，服务器返回资源，并在response header 中返回资源的缓存策略</li>
+					<li>第二次请求时，浏览器判断这些请求参数，击中强缓存就直接200，否则就把请求参数加到request header 头中传给服务器，看是否击中协商缓存，击中则返回304，否则浏览器返回新的资源。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>强缓存</h3>
+				<ul>
+					<li>强缓存命中，则直接读取浏览器本地的资源，在network中显示的form memory 或者 form disk</li>
+					<li>控制强制缓存的字段有：Cache-Control(http1.1)和Expirs(http1.0)</li>
+					<li>Cache-control是一个相对时间，用以表达在这个时间点之前发起请求可以直接从浏览器中读取数据，无需发起请求。</li>
+					<li>Exprirs是一个绝对时间。用以表达在这个时间点之前发起请求可以直接从浏览器中读取数据，无需发起请求。</li>
+					<li>Cache-control优先级比Exprirs高，前者的出现是为了解决Exprirs在浏览器时间被手动更改导致缓存判断错误的问题，同时存在则使用前者。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>强缓存Exprirs</h3>
+				<ul>
+					<li>该字段是服务器响应消息头字段，告诉浏览器在过期时间之前可以直接在浏览器缓存中读取数据</li>
+					<li>Exprirs是HTTP1.0的字段，表示缓存到期时间，是一个绝对时间（当前时间+缓存时间）。在响应消息头中，设置这个字段之后，就可以告诉浏览器，在未过期之前不需要再次请求</li>
+					<li>由于是绝对时间，用户可能会将客户端本地时间进行修改，而导致浏览器判断缓存失效，重新请求该资源。</li>
+					<li>优势：HTTP1.0产物，可以在HTTP1.0和1.1中使用，简单易用</li>
+					<li>缺点：时间由服务器发送的（UTC），如果服务器时间和客户款时间不一致，可能会出现问题。存在版本问题。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>强缓存Cache-control</h3>
+				<ul>
+					<li>已知Expirs的缺点之后，在HTTP1.1中，新增了一个Cache-control字段，该字段表示资源缓存的最大有效时间。在该时间内，客户端不需要向服务器端发请求</li>
+					<li>Cache-control常用的值：</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>
