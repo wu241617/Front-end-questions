@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				padding:1rem;
+				margin:2rem auto 0;
+				font-size:0.7rem;
+				font-family:微软雅黑;
+				box-shadow:0 0 0.5rem 0.5rem #666;
+				border-radius:1rem;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+				background-color:black;
+				color:white;
+				margin:0.5rem 0;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+			}
+			ul>li{
+				margin:0.5rem;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>浏览器分层</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>分层与合成</h3>
+				<ul>
+					<li>通常页面的组成是非常复杂的，有的页面要是实现一些比较复杂的动画效果，如果没有分层机制，从布局树直接生成目标图片的话，每次页面变化很小的时候，都会触发重排和回流机制。会严重影响页面渲染的效果。</li>
+					<li>为了提升每帧的渲染效率，Chrome引入了分层和合成的机制。</li>
+					<li>可以把一张网页想象成是由很多个图片叠加在一起的，每个图片对应一个图层，Chrome合成器最终将这些图层合成用于显示的图片。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>生成层的方式</h3>
+				<ul>
+					<li>3D transforms,translate3d,translateZ等</li>
+					<li>video, canvas, iframe等元素</li>
+					<li>通过Element,animation()实现的opacity动画转换</li>
+					<li>通过CSS动画实现的opacity动画转换</li>
+					<li>position:fixed;</li>
+					<li>will-change</li>
+					<li>fikter</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>

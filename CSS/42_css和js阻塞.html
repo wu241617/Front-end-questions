@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=1.0,viewport-fit=cover">
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				padding:1rem;
+				margin:2rem auto 0;
+				box-shadow:0 0 0.5rem 0.5rem #666;
+				border-radius:1rem;
+				font-size:0.7rem;
+				font-family:微软雅黑;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+				margin:0.5rem;
+				background-color:black;
+				color:white;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+			}
+			ul>li{
+				margin:0.5rem;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>CSS和JS阻塞</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>link 标签不会阻塞DOM解析，会阻塞DOM渲染</h3>
+				<ul>
+					<li>link标签并不会像带src属性的script标签一样会触发页面的paint。浏览器并行解析生成DOM Tree 和 CSSOM Tree，当二者解析完，才会生成rending tree,页面才会渲染。所以应尽量减少引入样式文件的大小，提高首屏加载速度。 </li>
+				</ul>
+			</section>
+			<section>
+				<h3>script 标签会阻塞DOM解析和渲染</h3>
+				<ul>
+					<li>script 标签会阻塞DOM解析和渲染，但在阻塞同时，其他线程会解析文档的其余部分（预解析），找出并加载需要通过网络加载的其他资源。通过这种方式，资源可以在并行连接上加载，从而提高总体速度。预解析不会修改解析出来的DOM树，只会解析外部资源。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>优化</h3>
+				<ul>
+					<li>合理放置脚本位置</li>
+					<li>预加载Link preload</li>
+					<li>DNS Prefetch 预解析</li>
+					<li>script 延迟脚本加载 defer/async</li>
+				</ul>
+			</section>
+			<section>
+				<h3>总结</h3>
+				<ul>
+					<li>html 代码中会引入一些额外的资源，比如图片，CSS，JS脚本等，图片和CSS这些资源需要通过网络下载或从缓存中加载，这些资源不会阻塞HTML的解析，因为他们不会影响DOM树的生成。但当HTML解析过程中遇到script标签，就会停止HTML解析流程，去加载解析并且执行JS。这是因为浏览器并不知道JS执行是否改变当前页面的HTML结构，如果JS代码里用了document.write方式修改html,之前的和html解析就没有任何意义了，这就是为什么我们一直说要把script标签放在合适的位置，或者使用async和defer属性来异步加载JS</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>

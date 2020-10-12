@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				margin:2rem auto 0;
+				padding:1rem;
+				box-shadow:0 0 0.5rem 0.5rem #666;
+				border-radius:1rem;
+				font-size:0.7rem;
+				font-family:微软雅黑;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				margin:0.5rem 0;
+				text-align:center;
+				line-height:2rem;
+				background-color:black;
+				color:white;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+				overflow:hidden;
+				text-overflow:ellipsis;
+				white-space: nowrap;
+			}
+			ul>li{
+				margin:0.5rem 0;
+			}
+		</style>
+		<style>
+			@meida (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>CSS预处理器</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>CSS预处理器</h3>
+				<ul>
+					<li>为CSS增加编程特性的拓展语言，可以使用变量，简单逻辑判断，函数等基本编程技巧。</li>
+					<li>CSS预处理器编译输出还是标准的CSS样式。</li>
+					<li>Less，Sass 都是动态的样式语言，是CSS预处理器。</li>
+					<li>Less变量符号@，Sass变量符号$。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>CSS预处理器解决问题</h3>
+				<ul>
+					<li>CSS语法不够强大，因为无法嵌套导致有很多重复的选择器</li>
+					<li>没有变量和合理的复用机制，导致逻辑上相关的属性值只能以字面量的形式重复输出，难以维护。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>常用规则</h3>
+				<ul>
+					<li>变量</li>
+					<li>嵌套语法</li>
+					<li>混入</li>
+					<li>@import</li>
+					<li>运算</li>
+					<li>函数</li>
+					<li>继承</li>
+				</ul>
+			</section>
+			<section>
+				<h3>CSS预处理器带来的好处</h3>
+				<ul>
+					<li>CSS代码更加整洁，更易维护，代码量更少。</li>
+					<li>修改更快，基础颜色使用变量。</li>
+					<li>常用代码使用代码块，节省大量代码。</li>
+					<li>CSS嵌套减少了大量的重复选择器，避免一些低级错误。</li>
+					<li>变量，混入大大提高了样式的复用性。</li>
+					<li>更多的函数方法，让开发者能够有能力生成更加复杂的CSS样式。</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>

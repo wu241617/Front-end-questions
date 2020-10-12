@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				padding:1rem;
+				margin:2rem auto 0;
+				box-shadow:0 0 0.5rem 0.5rem #666;
+				border-radius:1rem;
+				font-size:0.7rem;
+				font-family:微软雅黑;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+				background-color:black;
+				color:white;
+				margin:0.5rem 0;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+				overflow:hidden;
+				text-overflow:ellipsis;
+				white-space: nowrap;
+			}
+			ul>li{
+				margin:0.5rem 0;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>重绘和重排</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>重绘重排概念</h3>
+				<ul>
+					<li>重绘：当改变了某个元素的颜色属性时不会重新触发布局，但还是会触发样式计算和绘制。</li>
+					<li>重排：当我们改变一个元素的尺寸位置属性时，会重新进行样式计算，布局，绘制，以及后面所有的流程。</li>
+					<li>重排和重绘都会占用主线程，还有JS也会运行在主线程，所以会出现抢占执行时间的问题。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>触发的原因</h3>
+				<ul>
+					<li>页面首次进入的渲染</li>
+					<li>浏览器的resize</li>
+					<li>元素位置和尺寸发生改变</li>
+					<li>可见元素的删减</li>
+					<li>内容发生变化</li>
+					<li>字体的font发生改变</li>
+					<li>css伪类激活</li>
+				</ul>
+			</section>
+			<section>
+				<h3>优化方式</h3>
+				<ul>
+					<li>第一种方式：requestAnimationFrame,它会在每一帧调用，通过回调API的回调，可以把JS运行任务分为一些更小的任务块，在每一帧事件用完前暂停JS执行归还主线程，这样的话在下一帧开始时，主线程就可以按照执行布局和重绘。</li>
+					<li>第二种方式：栅格化的整个流程不占用主线程，只在合成器线程和栅格线程中运行，无需和JS抢占主线程。如果反复进行重绘和重排可能会导致掉帧，这是因为有可能JS执行阻塞了主进程。在CSS在有个动画属性tansform,通过该属性实现的动画不会经过布局和绘制，而是执行运行在合成器线程和栅格线程。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>避免重绘重排的具体方案</h3>
+				<ul>
+					<li>CSS
+						<ol>
+							<li>使用transform代替top等位移</li>
+							<li>使用visibility代替display:none;</li>
+							<li>避免使用table布局</li>
+							<li>尽可能在DOM树的最末端，改变class</li>
+							<li>避免设置多层内联样式，尽量层级扁平</li>
+							<li>将动画效果应用到position:absolute;和position:fixed;元素上</li>
+							<li>避免使用CSS表达式</li>
+							<li>将频繁重绘或者回流的节点设置为图层。</li>
+							<li>CSS3硬件加速（GPU加速）</li>
+						</ol>
+					</li>
+					<li>JS
+						<ol>
+							<li>避免频繁操作样式，合并操作</li>
+							<li>避免频繁操作DOM，合并操作</li>
+							<li>防抖节流控制频率</li>
+							<li>避免频繁读取会引起回流 / 重绘的属性</li>
+							<li>对具有复杂动画的元素使用绝对定位</li>
+						</ol>
+					</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>
