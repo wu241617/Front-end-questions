@@ -19,9 +19,42 @@
 	<body>
 		<main>
 			<section>
-				<h3></h3>
+				<h3>XSS跨站脚本攻击</h3>
 				<ul>
-					<li></li>
+					<li>就是攻击者想尽一起办法将可以执行的代码注入到网页中。</li>
+					<li>存储型（server端）：攻击者将恶意代码提交到目标网站的数据库中</li>
+					<li>反射型（server端）：存储型恶意代码在URL上</li>
+					<li>DOM型（浏览器端）：取出和执行恶意代码由浏览器完成，属于前端JS自身的安全漏洞，其他两种都属于服务器端的安全漏洞</li>
+					<li>预防方案：防止攻击者提交恶意代码，防止浏览器执行恶意代码。
+						<ol>
+							<li>对JS 进行严格的输出编码，如HTML元素的编码，JS编码，CSS编码，URL编码</li>
+							<li>CSP HTTP Header</li>
+							<li>输入验证，比如一些常见的数字，URL，电话号，邮箱等做校验检查</li>
+							<li>开启浏览器XSS防御，HTTP Only cookie,禁止JS读取某些敏感Cookie，攻击者完成XSS注入后也无法窃取此cookie</li>
+							<li>验证码</li>
+						</ol>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h3>CSRF:跨站请求伪造</h3>
+				<ul>
+					<li>攻击者诱导受害人进入第三方网站，在第三方网站中，向被攻击网站发送跨站请求。利用受害者在被攻击网站已经获取的注册凭证，绕过后台的用户验证，达到冒充用户对被攻击的网站执行某项操作的目的。</li>
+					<li>攻击类型：
+						<ol>
+							<li>GET型：如在页面的某个img中发起一个get请求。</li>
+							<li>POST 型：通过自动提交表单到恶意网站</li>
+							<li>链接型：需要诱导用户点击链接</li>
+							<li>预防方案：
+								<ol>
+									<li>同源检测</li>
+									<li>CSRF Token 校验</li>
+									<li>双重 cookie 验证</li>
+									<li>Samesite Coolie属性</li>
+								</ol>
+							</li>
+						</ol>	
+					</li>
 				</ul>
 			</section>
 		</main>

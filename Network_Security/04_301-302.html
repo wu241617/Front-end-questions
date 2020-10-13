@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<link rel="stylesheet" href="./index.css">
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>301和302的https被劫持，合理使用HSTS</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>什么是HSTS</h3>
+				<ul>
+					<li>HSTS，HTTP严格传输安全协议。表明该网站已经实现TLS，要求浏览器对用户明文访问的URL重写成HTTPS，避免了始终强制302重定向的延时开销</li>
+				</ul>
+			</section>
+			<section>
+				<h3>HSTS的实现原理</h3>
+				<ul>
+					<li>当浏览器第一次HTTP请求服务器时，返回的响应头中增加Strict-Transport-Security,告诉浏览器在指定的时间内，这个网站必须通过HTTPS协议访问</li>
+					<li>也就是对于这个网站的HTTP地址，浏览器需要先在本地替换成HTTPS之后再发送请求</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>

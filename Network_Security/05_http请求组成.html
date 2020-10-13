@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<link rel="stylesheet" href="./index.css">
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					padding:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>http请求组成</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>HTTP请求</h3>
+				<ul>
+					<li>从使用者的角度看，一个HTTP请求可以起始于</li>
+					<li>浏览器打开一个新的网页（手动输入网址或者点击超链接a）</li>
+					<li>提交一个表单（form）</li>
+					<li>本质上说，以上两种发起方式，都是用户端向HTTP服务器发送的一个URL请求</li>
+				</ul>
+			</section>
+			<section>
+				<h3>标准的HTTP请求组成</h3>
+				<ul>
+					<li>请求行：包含用于请求的方法，URL，HTTP协议版本等字段</li>
+					<li>请求头部：User-Agent:产生请求的浏览器类型。Accepc:客户端可识别的内容型外表。Host:主机地址</li>
+					<li>请求数据：post方法中，会把数据以K-V形式发送请求。</li>
+					<li>空行：发送回车符和换行符，通知服务器以下不在有请求头。</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>
