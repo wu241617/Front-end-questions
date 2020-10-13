@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<style>
+			@media (max-width:450px){
+				width:auto;
+				height:auto;
+				padding:0;
+				margin:0;
+			}
+		</style>
+		<title>HTTP请求方法</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>HTTP请求方法</h3>
+				<ul>
+					<li>HTTP1.1中定义的请求方法有8种：get,post,put,delete,patch,head,options,trace。</li>
+					<li>最常用的两种是 get 和 post，如果是 restful 接口的话一般会用到get,post,put,delete</li>
+				</ul>
+			</section>
+			<section>
+				<h3>方法详解</h3>
+				<ul>
+					<li>options:返回服务器针对特定资源所支持的HTTP请求方法，也可以利用web服务器发送*的请求头来测试服务器的功能性。</li>
+					<li>head:向服务器索于get请求相一致的响应，只不过响应体将不会被返回。</li>
+					<li>get:向特定的资源发出请求。</li>
+					<li>post:向指定资源提交数据进行处理请求。数据被包含在请求体中。POST请求可能会导致新的资源的建立或已有资源的修改。</li>
+					<li>put:向指定资源位置上传最新内容。</li>
+					<li>delete：请求服务器删除Request-URL所标识的资源。</li>
+					<li>trace:回显服务器收到的请求，主要用于测试和诊断。</li>
+					<li>connect:HTTP1.1协议中预留给能够将连接改为管理方式的代理服务器。</li>
+					<li>patch:新引入的，对put方法的补充，用来对已知资源进行局部修改。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>注意：</h3>
+				<ul>
+					<li>方法名称是区分大小写的。</li>
+					<li>某个请求所针对的资源不支持对应的请求方法的时候，服务器返回状态码405</li>
+					<li>当服务器不认识或不支持对应的请求方法时，返回状态码501</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>

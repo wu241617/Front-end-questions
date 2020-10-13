@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<link rel="stylesheet" href="./index.css">
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>静态链接和动态链接的区别</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>静态链接和动态链接</h3>
+				<ul>
+					<li>静态链接就是在程序执行前，把要链接的内容链接到可执行的文件，生成一个目标文件。</li>
+					<li>动态链接是没有将内容拷贝到可执行文件中，而是先加入地址或者引用指针，在执行的过程中再去找要链接的内容。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>动态链接</h3>
+				<ul>
+					<li>装在时动态链接：在编译前确认链接信息，编译时只保留重要的链接信息，执行时在内存中将其链接如调用程序的执行空间中。目的是便于代码共享</li>
+					<li>运行时动态链接：在编译前不知道链接信息，在执行时才加载到内存中，并标识内存地址，目的是只存一份。</li>
+					<li>这个和JS中模块引入一样，如果当前的模块写在当前文件中，则是静态链接，而用import引入，则是动态链接。</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>

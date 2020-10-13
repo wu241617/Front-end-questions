@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<link rel="stylesheet" href="./index.css">
+		<style type="text/css">
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>http2中多路复用</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>http2.0的多路复用和http1.x中的长连接复用有啥区别？</h3>
+				<ul>
+					<li>http1.x默认开启持久连接，在一个TCP连接上可以传送多个HTTP请求和响应。减少了建立和关闭连接的消耗和延迟。</li>
+					<li>http2支持多路复用，是http1.x持久化连接的升级版。多路复用，就是在一个TCP连接中可以存在多条流，也就是可以发送多个请求，服务端则可以通过帧中的标识知道该帧属于哪个流（即请求），通过重新排序还原请求。</li>
+					<li>多路复用允许并发的发起多个请求，每个请求及该请求响应不需要等待其他请求或响应，避免了线头阻塞问题。这样某个请求任务耗时严重，不会影响到其它连接的正常执行，极大的提高了传输性能。</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>

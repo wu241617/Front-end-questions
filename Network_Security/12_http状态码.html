@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta naem="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<link rel="stylesheet" href="./index.css">
+		<style>
+			@media (max-width:450px) {
+				main {
+					width: auto;
+					height: auto;
+					padding: 0;
+					margin: 0;
+				}
+			}
+		</style>
+		<title>HTTP状态码</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>HTTP1.1状态码20x,30x,40x,50x等个区间含义</h3>
+				<ul>
+					<li>20x:成功处理请求
+						<ol>
+							<li>200成功</li>
+							<li>201已创建</li>
+							<li>202已接受</li>
+							<li>203非授权</li>
+							<li>204无内容</li>
+							<li>205重置内容</li>
+							<li>206部分内容</li>
+						</ol>
+					</li>
+					<li>30x:重定向请求
+						<ol>
+							<li>300多种选择</li>
+							<li>301永久移动</li>
+							<li>302临时移动</li>
+							<li>303查看其它位置</li>
+							<li>304未修改</li>
+							<li>305代理</li>
+							<li>307临时重定向</li>
+						</ol>
+					</li>
+					<li>40x:请求错误
+						<ol>
+							<li>400错误</li>
+							<li>401未授权</li>
+							<li>403禁止</li>
+							<li>404未找到</li>
+							<li>405方法禁用</li>
+							<li>406不接受</li>
+							<li>407需代理授权</li>
+							<li>408请求超时</li>
+							<li>409冲突</li>
+							<li>410已删除</li>
+							<li>411需要有效长度</li>
+							<li>412未满足条件</li>
+							<li>413请求实体过大</li>
+							<li>414请求URL过长</li>
+							<li>415不支持的媒体类型</li>
+							<li>416请求范围不合要求</li>
+							<li>417未满足期望值</li>
+							<li>428请求先决条件</li>
+							<li>429太多请求</li>
+							<li>431请求字段太大</li>
+						</ol>
+					</li>
+					<li>50x:服务器错误
+						<ol>
+							<li>500服务器内部错误</li>
+							<li>501尚未实施</li>
+							<li>502错误网管</li>
+							<li>503服务不可用</li>
+							<li>504网关超时</li>
+							<li>505HTTP版本不受支持</li>
+							<li>511要求网络认证</li>
+						</ol>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h3></h3>
+				<ul>
+					<li>Action 在 Restful API 中分别使用哪些 Http 副词表现 CRUD</li>
+					<li>GET,POST,PUT,DELETE,PATCH</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>

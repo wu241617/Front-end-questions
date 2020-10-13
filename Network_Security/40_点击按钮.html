@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<link rel="stylesheet" href="./index.css">
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>点击按钮，浏览器会做</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>点击按钮，浏览器做的事情</h3>
+				<ul>
+					<li>点击按钮后创建一个Event实例</li>
+					<li>把事件放在事件队列中，等待处理</li>
+					<li>Event循环线程处理这个事件</li>
+					<li>沿着DOM路径找到触发事件的元素</li>
+					<li>如果这个元素上有处理这个事件的默认行为，并且要在DOM事件处理阶段周期之前执行，就执行它的默认行为</li>
+					<li>捕获阶段</li>
+					<li>目标阶段</li>
+					<li>冒泡阶段</li>
+					<li>如果这个元素上有处理这个事件的默认行为，并且要在DOM事件处理阶段周期之后执行，就执行它的默认行为</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>

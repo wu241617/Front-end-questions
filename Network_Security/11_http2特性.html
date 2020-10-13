@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<link rel="stylesheet" href="./index.css">
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>HTTP2特性</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>二进制传输</h3>
+				<ul>
+					<li>在之前的http1.x中，是通过文本传输的，http2中所有的传输数据都会被分割，并采用二进制编码。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>多路复用</h3>
+				<ul>
+					<li>在HTTP2中有两个概念，流(stream)和帧(frame)。帧是最小单位，每个帧都会有 Stream Identifier来标记它属于哪个流。</li>
+					<li>在http1.x中，每个HTTP请求会建立一个TCP连接，也就意味着每个请求都要进行三次握手，这会造成时间和资源上的浪费，而且浏览器会限制同一域名下并发请求的个数，当请求很多资源时，队头阻塞会导致在达到最大请求数量时，剩余的资源要等待其他资源请求完成后才会发起请求。</li>
+					<li>在http2中，所有请求都会公用一个TCP连接，就可以传输所有的数据。这就解决了浏览器同一域名请求数量的问题，也解决了每开一个tcp连接都会造成的资源浪费。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>同一个tcp连接下多个http请求，如何保证传输不出错呢？</h3>
+				<ul>
+					<li>多路复用，就是在一个TCP连接中可以存在多个流，每个流对应一个请求，包含多个帧。通过Stream Identifier就可以识别出每个帧对应的流。当帧到达服务端之后，就可以根据 Stream Idemtifier来重新组合得到完整的请求了。这就在提高传输性能的同时保证了传输的正确性。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>header压缩</h3>
+				<ul>
+					<li>http2中，使用了HPACK压缩格式，对header进行了编码，减少了header的大小，大概原理就是服务端和客户端共同维护一个静态词典，用于记录出现过的header,后面在传输过程中发送端直接传输记录的键名，接收端就可以通过键名找到相应的值。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>服务端push</h3>
+				<ul>
+					<li>在http2中，服务端可以在客户端的某个请求后，根据这个请求，主动推送其他资源</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>
