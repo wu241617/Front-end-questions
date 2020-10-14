@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<link rel="stylesheet" href="./index.css">
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>常见的HTTP请求头和它们各自的作用</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>常见的HTTP请求头</h3>
+				<ul>
+					<li>Accept：浏览器接受的格式</li>
+					<li>Accept-Encoding：浏览器接受的编码方式</li>
+					<li>Accept-Language：浏览器接受的语言，用于服务器判断多语言</li>
+					<li>Cache-Control：控制缓存的时效性</li>
+					<li>Connection：连接方式，keep-alive且服务端支持，则会复用TCP连接</li>
+					<li>Host：HTTP访问使用的域名</li>
+					<li>if-Modeified-Since：上次访问时的更改时间，如果服务端认为此时间后没有更新，则会给出304响应</li>
+					<li>if-None-Match：上次访问使用的E-Tag，通常是页面的信息摘要，比更改时间更准确一点</li>
+					<li>User-Agent：客户端标识，多数浏览器这个字段很复杂，包括操作系统，浏览器内核，版本号，HTML排版引擎等</li>
+					<li>Cookie：客户端存储的cookie字符串。</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>
