@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<link rel="stylesheet" href="./index.css">
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>webpack优化策略</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>优化webpack的构建速度</h3>
+				<ul>
+					<li>使用高版本的webpack(使用webpack4)</li>
+					<li>多线程/多实例构建：thread-loader</li>
+					<li>缩小打包作用域:
+						<ol>
+							<li>exclude/include(确定loader规则范围)</li>
+							<li>resolve.module指明第三方模块的绝对路径</li>
+							<li>noParse对完全不需要解析的库进行忽略（不去解析但仍会打包到bundle中，注意被忽略的文件中不应该包含import,require,define等模块化语句）</li>
+							<li>IgnorePlugin(完全排除模块)</li>
+							<li>合理使用 alias</li>
+						</ol>
+					</li>
+					<li>充分利用缓存，提升二次构建速度
+						<ol>
+							<li>babel-loader开启缓存</li>
+							<li>terser-webpack-plugin开启缓存</li>
+							<li>使用cache-loader 或者 hard-source-webpack-plugin</li>
+						</ol>
+					</li>
+					<li>DLL:使用 DllPlugin进行分包，使用DllReferencePlugin(索引链接)对manifest.json引用让一些基本不会改动的代码先打包成静态资源，避免反复编译浪费时间。</li>
+				</ul>	
+			</section>
+			<section>
+				<h3>优化webpack的打包体积</h3>
+				<ul>
+					<li>压缩代码
+						<ol>
+							<li>webpack-paralle-uglify-plugin</li>
+							<li>uglifyjs-webpack-plugin开启parallel参数</li>
+							<li>terser-webpack-plugin开启parallel参数</li>
+							<li>多进程并行压缩</li>
+							<li>通过mini-css-extract-plugin提取Chunk中的CSS代码到单独的文件，通过optimize-css-assets-webpack-plugin插件，开启cssnano压缩css</li>
+						</ol>
+					</li>
+					<li>提取页面公共资源
+						<ol>
+							<li>使用html-webpack-externals-plugin,将基础包通过CDN引入，不打人bundle中</li>
+							<li>使用SplitChunksPlugin进行（公共脚本，基础包，页面公共文件）分离（webpack4内置），替代了CommonsChunkPlugin插件</li>
+							<li>基础包分离：将一些基础库放到CDN。</li>
+						</ol>
+					</li>
+					<li>Tree shaking
+						<ol>
+							<li>purgecss-webpack-plugin和mini-css-extract-plugin配合使用</li>
+							<li>打包过程中检测工程中没有引用过的模块并进行标记，在资源压缩时将它们从最终的bundle中去除（只能对ES6 module生效）</li>
+							<li>禁用babel-loader的模块依赖解析，否则webpack接收到的都是转换过来的CommonJS形式的模块，无法进行tree shaking</li>
+							<li>使用uncss去除无用css</li>
+						</ol>
+					</li>
+					<li>Scope hoisting
+						<ol>
+							<li>构建后的代码会存在大量的闭包，造成体积增大，运行代码时创建的函数作用域变多，内存开销变大。Scope hoisting将所有模块的代码按照引用顺序放在一个函数作用域里，然后适当的重命名一些变量，防止变量名冲突。</li>
+							<li>必须是ES6语法，因为很多第三方库仍采用CommonJS语法，为了充分发挥Scope hoisting的作用，需要配置mainFields对第三方模块优先采用jsnext:main中指向的ES6模块化语法。</li>
+						</ol>
+					</li>
+					<li>图片压缩
+						<ol>
+							<li>使用基于Node库的imagmin(很多定制选项，可以处理多种图片格式)</li>
+							<li>配置image-webpack-loader</li>
+						</ol>
+					</li>
+					<li>动态Polyfill
+						<ol>
+							<li>建议采用polyfill-service只给用户返回需要的polyfill,社区维护</li>
+							<li>@babek-preset-env中通过useBuiltins:'usage'参数来动态加载polyfill。</li>
+						</ol>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h3>speed-measure-webpack-plugin插件</h3>
+				<ul>
+					<li>speed-measure-webpack-plugin插件:简称SMP，分析出webpack打包过程中Loader 和 Plugin的耗时，有助于找到构建过程中的性能瓶颈。</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>
