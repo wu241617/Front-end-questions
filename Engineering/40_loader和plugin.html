@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<link rel="stylesheet" href="./index.css">
+		<style>
+			@media (max-width:450px){
+				width:auto;
+				height:auto;
+				padding:0;
+				margin:0;
+			}
+		</style>
+		<title>关于webpack的loader和plugin</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>loader</h3>
+				<ul>
+					<li>loader是文件加载器，能够加载资源文件，并对这些文件进行一些处理，诸如编译，压缩等，最终一起打包到指定的文件中。处理一个文件可以使用多个loader，loader的执行顺序和配置文件是相反的，即最后一个loader最先执行，第一个loader最后一个执行。第一个执行的loader接收源文件内容作为参数，其他loader接收前一个执行的loader的返回值作为参数，最后执行的loader会返回此模块的Javascript源码。</li>
+					<li>编写自己的laoder时需要引用官方提供的laoder-utils，调用loaderUtils.getOptions(this)拿到webpack的配置参数，然后进行自己的处理。</li>
+					<li>loader本身仅仅是一个函数，接收模块代码的内容，然后返回代码内容转换后的结果，并且一个文件还可以连是的经过多个loader转化。</li>
+					<li>一个loader的职责是单一的，只需要完成一种转化。如果一个源文件需要经历多步转化才能正常使用，就通过多个loader去转化。在调用多个loader去转化一个文件时，每个loader会链式的顺序执行，第一个loader将会拿到需处理的原内容，上一个loader处理后的结果会传给下一个接着处理。最后的loader将处理后的最终结果返回给Webpack。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>plugin</h3>
+				<ul>
+					<li>plugin功能强大，loader不能做的都是它做，它的功能要更加丰富。从打包优化和压缩，到重新定义环境变量，可以处理各种任务。</li>
+					<li>plugin让webpack的机制更加灵活，它在编译过程中留下的一系列生命周期的钩子，通过调用这些钩子来实现在不同编译结果时对原模块进行处理。它的编译是基于事件流来编译的，主要通过taptable来实现插件的绑定和执行的，taptable是基于发布订阅执行的插件架构，是用来创建</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>
