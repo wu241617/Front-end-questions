@@ -5,4 +5,6 @@
 - HTML / HTML5
 - CSS / CSS3
 - JS / ES6
+- webpack
+- HTTP / HTTPS
 ......
