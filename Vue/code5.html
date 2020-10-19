@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<my-header></my-header>
+			<my-footer></my-footer>
+		</div>
+		<script src="./vue.min.js"></script>
+		<script>
+			Vue.component('my-header', {
+				template: '<p>这是 header 区域</p>'
+			})
+			var footer = {
+				template: '<p>这是 footer 区域</p>'
+			}
+			var vm = new Vue({
+				el: '#app',
+				components: {
+					'my-footer': footer
+				}
+			})
+		</script>
+	</body>
+</html>

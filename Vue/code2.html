@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<p>是否显示：</p>
+			<label>显示：<input type="radio" name="change" checked="checked" @change="handle(true)"></label>
+			<label>隐藏：<input type="radio"  name="change" @change="handle(false)"></label>
+			<p v-if="flag">这是一个P元素</p>
+		</div>
+		<script src="./vue.min.js"></script>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					flag: true
+				},
+				methods: {
+					handle(bool){
+						this.flag = bool;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
