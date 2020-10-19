@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0,viewport-fit=cover">
+		<link rel="stylesheet" href="./index.css">
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>Vue_计算属性和普通属性的区别</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>区别</h3>
+				<ul>
+					<li>computed属性是vue的计算属性，是数据层到视图层的数据转化映射。</li>
+					<li>计算属性是基于它们的依赖进行缓存的，只有在相关依赖发生改变的时候，它们才会重新求值，也就是说，只要它的依赖没有发生改变，那么每次访问的时候，计算属性都会立即返回之前的计算结果，不在执行函数。</li>
+					<li>computed是响应式的，methods并非响应式。</li>
+					<li>调用方式不同，computed定义的成员像属性一样访问，methods定义的成员必须以函数形式调用。</li>
+					<li>computed是带缓存的，只有依赖数据发生改变，才会重新进行计算，而methods定义的成员必须以函数形式调用。</li>
+					<li>computed中的成员可以只定义一个函数作为只读属性，也可以定义get/set变成读写属性，这点在methods中成员做不到的。</li>
+					<li>computed不支持异步，当computed内有异步操作时无效，无法监听数据的变化。</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>
