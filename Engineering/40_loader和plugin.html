@@ -29,7 +29,55 @@
 				<h3>plugin</h3>
 				<ul>
 					<li>plugin功能强大，loader不能做的都是它做，它的功能要更加丰富。从打包优化和压缩，到重新定义环境变量，可以处理各种任务。</li>
-					<li>plugin让webpack的机制更加灵活，它在编译过程中留下的一系列生命周期的钩子，通过调用这些钩子来实现在不同编译结果时对原模块进行处理。它的编译是基于事件流来编译的，主要通过taptable来实现插件的绑定和执行的，taptable是基于发布订阅执行的插件架构，是用来创建</li>
+					<li>plugin让webpack的机制更加灵活，它在编译过程中留下的一系列生命周期的钩子，通过调用这些钩子来实现在不同编译结果时对原模块进行处理。它的编译是基于事件流来编译的，主要通过taptable来实现插件的绑定和执行的，taptable是基于发布订阅执行的插件架构，是用来创建声明周期钩子的库。调用complier.hooks.run.tap开始注册，创建compilation,基于配置创建chunks,在通过parser解析chunks,使用模块和依赖管理模块之间的依赖关系，最后使用template基于compilation数据生成代码结果。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>常见loader</h3>
+				<ul>
+					<li>file-loader:文件加载</li>
+					<li>url-loader:文件加载，可以设置阈值，小于时把文件base64编码。</li>
+					<li>image-loader:加载并压缩图片。</li>
+					<li>json-loader:webpack默认包含。</li>
+					<li>babel-loader:ES6+转成ES5。</li>
+					<li>ts-loader:ts转化为js。</li>
+					<li>awesome-typescript-loader:将ts转换为js,性能更好。</li>
+					<li>css-loader:处理@import和url这样的外部资源。</li>
+					<li>style-loader:在head创建style标签把样式插入。</li>
+					<li>postcss-loader:扩展css语法，使用postcss各种插件autoprefixer,cssnext,cssnano。</li>
+					<li>eslint-loader,tslint-loader:规范代码。</li>
+					<li>vue-loader:加载vue单文件组件。</li>
+					<li>i18n-loader:国际化。</li>
+					<li>cache-loader:性能开销大的loader前添加，将结果缓存到磁盘。</li>
+					<li>svg-inline-loader:压缩后的svg注入代码。</li>
+					<li>source-map-loader:加载source Map文件，方便调试。</li>
+					<li>expose-loader:暴露对象为全局变量。</li>
+					<li>import-loader,export-loader:可以向模块注入变量或者提供导出模块功能。</li>
+					<li>raw-loader:可以将文件以字符串形式返回。</li>
+					<li>校验测试：mocha-loader,jshint-loader,eslint-loader等。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>常见的plugin</h3>
+				<ul>
+					<li>ignore-plugin:忽略文件。</li>
+					<li>uglifyjs-webpack-plugin:压缩和混淆代码，不支持ES6压缩。</li>
+					<li>terser-webpack-plugin:压缩和混淆代码，支持ES6压缩。</li>
+					<li>webpack-parallel-uglify-plugin:多进程执行代码压缩，提升构建速度。</li>
+					<li>mini-css-extract-plugin:分离样式文件，css提取为独立文件，支持按需加载。</li>
+					<li>serviceworker-webpack-plugin:为网页添加离线缓存功能。</li>
+					<li>clean-webpack-plugin:目录清理。</li>
+					<li>speed-measure-webpack-plugin:可以看见每个loader和plugin执行耗时。</li>
+					<li>ProvidePlugin:自动加载模块，代替require和import。</li>
+					<li>html-webpack-plugin:可以根据模板自动生成html代码，并自动引用css和js 文件。</li>
+					<li>extract-text-webpack-plugin:将JS文件中引用的样式单例抽离成css。</li>
+					<li>DefinePlugin:编译时配置全局变量，这对开发模式和发布模式的构建允许不同的行为非常有用。</li>
+					<li>HosModuleReplacementPlugin:热更新。</li>
+					<li>DllPlugin和DllReferencePlugin相互配合，前者第三方包的构建，只构建业务代码。</li>
+					<li>optimize-css-assets-webpack-plugin:不同组件中重复的css可以快速去重。</li>
+					<li>webpack-bundle-analyzer:一个webpack的bundle文件分析工具。</li>
+					<li>compression-webpack-plugin:生产环境可采用gzip压缩JS和CSS。</li>
+					<li>happypack:通过多进程模型，来加速代码构建。</li>
 				</ul>
 			</section>
 		</main>

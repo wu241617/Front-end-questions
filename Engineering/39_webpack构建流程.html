@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<link rel="stylesheet" href="./index.css">
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>webpack构建流程</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>什么是webpack</h3>
+				<ul>
+					<li>webpack是一个打包模块化JS的工具，它将一切文件都看作模块，通过loader编译转换文件，通过plugin注入钩子，最后将输出的资源模块组合成文件。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>基础概念</h3>
+				<ul>
+					<li>Compiler:webpack的运行入口，实例化时定义webpack构建主要流程，同时创建构建时使用的核心对象compilation。</li>
+					<li>Compilation:由Compiler实例化，存储构建过程中流程使用到的数据，用于控制这些数据的变化，每一次构建创建一个Compliation实例。</li>
+					<li>Chunk:一般一个入口对应一个Chunk。</li>
+					<li>Module:用于表示代码模块的类型，有很多子类用于处理不同情况的模块，模块相关信息都可以从Module实例中获取。</li>
+					<li>Parser:基于acorn来分析AST语法树，解析出代码模块的依赖。</li>
+					<li>Dependency:解析时用于保存代码模块对应的依赖使用的对象。</li>
+					<li>Template:生成最终代码要使用到的代码模块。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>基本流程</h3>
+				<ul>
+					<li>创建Complier实例，用于控制构建流程，complier实例包含webpack基本环境信息。</li>
+					<li>根据配置项转换成对应内部插件，并初始化options配置项。</li>
+					<li>执行complier.run。</li>
+					<li>创建Compiltation实例，每次创建都会新创建一个Compiltation实例，包含了这次构建的基本信息。</li>
+					<li>从entry开始递归分析依赖，对每个依赖模块进行buildModule,通过Loader将不同类型的模块转换为webpack模块。</li>
+					<li>调用Parser.parse将上面结果转换成AST树。</li>
+					<li>遍历AST树，收集依赖Dependency,并保存在Compiltation实例的dependiencies属性中。</li>
+					<li>生成Chunks,不同entry生成不同chunk,动态导入也会生成自己的chunk,生成chunk后还会进行优化。</li>
+					<li>使用Template基于Compilation的数据生成结果代码。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>编译过程</h3>
+				<ul>
+					<li>先初始化参数，通过yargs将webpack.config.js和shell脚本的配置信息合并，进行参数的初始化。</li>
+					<li>利用初始化的参数创建compiler对象，它可以视作一个webpack的实例，存在于webpack从启动到结束的整个过程，它包含了webpack的module,plugin等参数信息，然后调用complier.run开始编译。</li>
+					<li>根据entry配置信息找到入口文件，创建compilation对象，可以理解为webpack一次编译的过程，包含了当前编译环境的所有资源，包括编译后的文件。</li>
+					<li>通过配置信息，调用loader进行模块化翻译，使用acorn将模块转换为AST，当遇到require依赖时，创建依赖并加入依赖数组，再找出依赖的依赖，递归异步的处理所有依赖。</li>
+					<li>将得到的所有模块的依赖关系和模块翻译后的文件，然后调用compliation.seal方法，对这些模块和根据模块依赖关系创建chunk进行整理，将所有资源进行合并拆分等操作，这是最后一次能修改输出内容的地方。</li>
+					<li>根据配置信息中的output配置，进行最后模块的文件输出，指定输出文件名和文件路径。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>原理</h3>
+				<ul>
+					<li>webpack打包输出后的文件其实就是一个闭包，传入的参数是一个对象，键值为所有输出文件的路径，内容为eval包裹的文件内容；闭包内重写了模块加载方式，自己定义了webpack_require方法，来实现模拟的commonjs规范模块加载机制。</li>
+					<li>webpack实际上是基于事件流的，通过一系列的插件来运行，webpack利用tapable库提供的各种钩子来实现对于整个构建流程各个步骤的控制。</li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>

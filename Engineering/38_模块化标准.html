@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<link rel="stylesheet" href="./index.css">
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>模块化标准</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>Common.JS</h3>
+				<ul>
+					<li>通过require方法来同步加载依赖，用过exports或者module.exports来导出需要暴露的接口。</li>
+					<li>每个文件就是一个模块，有自己的作用域，在一个文件里定义的变量，函数，类都是私有的，对其他文件不可见所有代码都运行在模块作用域，不会污染全局作用域。</li>
+					<li>模块可以多次加载，但是只会在第一次加载时运行一次，然后运行结果就被缓存了，之后再加载，直接读取缓存结果。想要让模块再次运行，必须清除缓存。</li>
+					<li>模块加载的顺序，按照其在代码中出现的顺序。同步的模块加载方式不适合在浏览器环境中，同步意味着阻塞加载，浏览器资源多是异步加载。不能非阻塞的并行加载多个模块。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>AMD：实现由curl requireJS,适合在浏览器中异步加载模块，可以并行加载多个模块，依赖前置，提前执行。</h3>
+			</section>
+			<section>
+				<h3>CMD：实现有Sea.js，coolie，依赖就近，延迟执行，缺点：依赖SPM打包，模块的加载逻辑偏重。</h3>
+			</section>
+			<section>
+				<h3>UMD：规范类似兼容CommonJS和AMD的语法糖，是模块定义的跨平台解决方案。</h3>
+			</section>
+			<seciton>
+				<h3>ES6模块化</h3>
+				<ul>
+					<li>编译时，就能确定模块的依赖关系，以及输入和输出的变量。</li>
+					<li>容易进行静态分析。</li>
+					<li>面向未来的ECMAScript标准。</li>
+					<li>缺点：原生的浏览器还没有实现该标准。全新的命令字只有node.js才支持。</li>
+				</ul>
+			</seciton>
+			<section>
+				<h3>CommonJS和esmodule区别</h3>
+				<ul>
+					<li>加载方式不同
+						<ol>
+							<li>commonjs是同步加载的，主要是在nodejs，也就是服务端的模块化机制，通过module.export导出声明，通过require('')加载。每个文件都是一个模块。他有自己的作用域，文件内的变量，属性函数等不被外界访问。node会将模块缓存，第二次加载会直接在缓存中读取。ES6模块化加载时通过export default导出，用import导入。可通过{}对导出的内容进行解构。</li>
+							<li>CommonJS在导出时都是值拷贝，就算导出的值变了，导入的值也不会改变，所以想跟新值，必须重新导入一次；ES Module采用实时绑定的方式，导入导出的值都指向同一个内存地址，所以导入值随导出值变化。</li>
+							<li>CommonJS加载的是整个模块，即将所有的接口全部加载进来；ES6可以单独加载其中的某个方法。</li>
+						</ol>
+					</li>
+					<li>运行机制不同：commonJS运行时加载，ES6模块是编译时输出接口。</li>
+					<li>主要运行环境不同
+					<ol>
+						<li>commonjs主要运行在服务端，运行时加载，输出的是整个文件，值得引入是直接导入，this指向当前模块，node将模块缓存。</li>
+						<li>ES6主要运行在浏览器端，编译时加载，延迟加载，异步加载，导出某个接口，可按需加载，值是引用得，执行时获取值，this指向undefined。</li>
+					</ol></li>
+				</ul>
+			</section>
+		</main>
+	</body>
+</html>
