@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<link rel="stylesheet" href="./index.css">
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>实现链式调用</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>实现链式调用</h3>
+				<ul>
+					<li>链式调用的核心是，调用完的方法将自身实例返回。</li>
+				</ul>
+			</section>
+		</main>
+		<script>
+			function Class1(){
+				console.log('初始化!')
+			}
+			Class1.prototype.method = function (param) {
+				console.log(param)
+				return this
+			}
+			// 由于 new 在实例化的时候，this会指向创建的对象，所有 this.method 方法会在原型中找到
+			var c1 = new Class1()
+			c1.method('第一次调用').method('第二次调用')
+		</script>
+	</body>
+</html>

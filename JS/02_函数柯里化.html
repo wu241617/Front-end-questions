@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<link rel="stylesheet" href="./index.css">
+		<style>
+			@media (max-width:450px) {
+				main {
+					width: auto;
+					height: auto;
+					margin: 0;
+					padding: 0;
+				}
+			}
+		</style>
+		<title>函数柯里化</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>函数柯里化</h3>
+				<ul>
+					<li>函数柯里化的概念：柯里化是把接受多个参数的函数转变为接受一个单一参数的函数，并且返回接收余下的参数且返回结果的新函数的技术。</li>
+				</ul>
+			</section>
+		</main>
+		<script>
+			// 方法一：
+			function add(a) {
+				return function(b) {
+					return function(c) {
+						return a + b + c
+					}
+				}
+			}
+			var result = add(1)(2)(3)
+			console.log(result)
+			// 方法二 （柯里化）
+			// 实现函数柯里化
+			// 柯里化函数curry，传入初始的函数，返回柯里化后的函数
+			 
+			/**
+			    @fn: 原始函数
+			    @arg: 传入的参数，可选
+			**/
+			var curry = function(fn, ...args){
+			    var length = fn.length; // 获取参数个数
+			    var args = args || [];
+			       return function(){
+			            var newArgs = args.concat(Array.prototype.slice.call(arguments));
+			            if(newArgs.length < length){
+			                return curry.call(this, fn, ...newArgs);
+			            }else{
+			                return fn.apply(this, newArgs);
+			            }
+			        }
+			}
+			 
+			 
+			function add(a,b,c){
+			    return a + b + c;
+			}
+			 
+			var curryAdd = curry(add, 1);
+			curryAdd(2)(3);
+			curry(add)(1)(2)(3)
+		</script>
+	</body>
+</html>
